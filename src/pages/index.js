@@ -12,7 +12,9 @@ const MainContainer = styled.div`
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hi people</h1>
+    <Link to="/">
+      <h1>Hi people</h1>
+    </Link>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
     <MainContainer>
