@@ -1,26 +1,20 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
 
 const MainContainer = styled.div`
-  max-width: 300px;
-  margin-bottom: 1.45rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(https://source.unsplash.com/a8pXN9_5R2M/1600x900);
 `;
 
 const IndexPage = () => (
   <Layout>
-    <Link to="/">
-      <h1>Hi people</h1>
-    </Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <MainContainer>
-      <Image />
-    </MainContainer>
-    <Link to="/page-2/">Go to page 2</Link>
+    <MainContainer />
   </Layout>
 );
 
