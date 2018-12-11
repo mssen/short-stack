@@ -2,15 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
-import { Normalize } from 'styled-normalize';
+import { createGlobalStyle } from 'styled-components';
+import styledNormalize from 'styled-normalize';
+import 'typeface-montserrat';
 
 import Header from './header';
 
-const PageContainer = styled.div`
-  margin: 0 auto;
-  max-width: 960px;
-  padding: 0px 1.0875rem 1.45rem;
+const GlobalStyle = createGlobalStyle`
+  ${styledNormalize}
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Montserrat, sans-serif;
+    color: #5d5d81;
+  }
+
+  body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+  }
+
+  a {
+    color: #8e5572;
+  }
 `;
 
 const Layout = ({ children }) => (
@@ -35,9 +54,9 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Normalize />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <PageContainer>{children}</PageContainer>
+        <GlobalStyle />
+        <Header />
+        <div>{children}</div>
       </>
     )}
   />
