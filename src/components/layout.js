@@ -7,6 +7,7 @@ import styledNormalize from 'styled-normalize';
 import 'typeface-montserrat';
 
 import Header from './header';
+import SocialLinks from './socialLinks';
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -57,6 +58,7 @@ const Layout = ({ children }) => (
         <GlobalStyle />
         <Header />
         <div>{children}</div>
+        <SocialLinks />
       </>
     )}
   />
