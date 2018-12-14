@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
+import SocialLinks from '../components/socialLinks';
 
 const MainContainer = styled.div`
   background-size: cover;
@@ -15,6 +16,7 @@ const MainContainer = styled.div`
 const IndexPage = () => (
   <Layout>
     <MainContainer />
+    <SocialLinks />
   </Layout>
 );
 
