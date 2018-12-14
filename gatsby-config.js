@@ -1,3 +1,11 @@
+const dotenv = require('dotenv');
+
+if (process.env.ENVIRONMENT !== 'production') {
+  dotenv.config();
+}
+
+const { spaceId, accessToken } = process.env;
+
 module.exports = {
   siteMetadata: {
     title: 'Short Stack Photography',
@@ -26,6 +34,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId,
+        accessToken,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
