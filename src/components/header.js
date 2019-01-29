@@ -2,29 +2,22 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
-  padding: 1em;
-  display: flex;
-  align-items: baseline;
-
-  h1 {
-    margin: 0;
-  }
-`;
-
-const Spacer = styled.span`
-  flex: 1;
-`;
-
-const HeaderLink = styled(Link)`
-  text-decoration: none;
+const HeaderText = styled.h1`
+  text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
 `;
 
+const NavContainer = styled.div`
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+`;
+
 const NavLink = styled(Link)`
   text-decoration: none;
-  margin-left: 1em;
+  margin: 0 1em;
 
   &.active {
     padding-bottom: 0.5em;
@@ -33,23 +26,28 @@ const NavLink = styled(Link)`
 `;
 
 const Header = () => (
-  <HeaderContainer>
-    <h1>
-      <HeaderLink to="/">
-        short<strong>stack</strong>photography
-      </HeaderLink>
-    </h1>
-    <Spacer />
-    <NavLink to="/portfolio" activeClassName="active">
-      Portfolio
-    </NavLink>
-    <NavLink activeClassName="active" to="/services">
-      Services
-    </NavLink>
-    <NavLink activeClassName="active" to="/contact">
-      Contact
-    </NavLink>
-  </HeaderContainer>
+  <React.Fragment>
+    <HeaderText>
+      short<strong>stack</strong>photography
+    </HeaderText>
+    <NavContainer>
+      <NavLink to="/" activeClassName="active">
+        Home
+      </NavLink>
+      <NavLink to="/galleries" activeClassName="active">
+        Galleries
+      </NavLink>
+      <NavLink activeClassName="active" to="/services">
+        Services
+      </NavLink>
+      <NavLink activeClassName="active" to="/contact">
+        Contact
+      </NavLink>
+      <NavLink activeClassName="active" to="/about">
+        About
+      </NavLink>
+    </NavContainer>
+  </React.Fragment>
 );
 
 export default Header;
