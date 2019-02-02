@@ -57,7 +57,7 @@ const Layout = ({ children }) => (
         </Helmet>
         <GlobalStyle />
         <Header />
-        <div>{children}</div>
+        <main>{children}</main>
         <SocialLinks />
       </>
     )}

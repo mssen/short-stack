@@ -2,29 +2,68 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
-  padding: 1em;
-  display: flex;
-  align-items: baseline;
-
-  h1 {
-    margin: 0;
-  }
-`;
-
-const Spacer = styled.span`
-  flex: 1;
-`;
-
-const HeaderLink = styled(Link)`
-  text-decoration: none;
+const HeaderText = styled.h1`
+  text-align: center;
   font-weight: normal;
   font-size: 1.5rem;
 `;
 
+const NavContainer = styled.nav`
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+`;
+
+const NavButton = styled.button`
+  position: absolute;
+  left: 1em;
+  top: 0.8em;
+  padding: 8px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: 1em;
+  background: transparent;
+  color: #000;
+  display: block;
+
+  @media (min-width: 700px) {
+    display: none;
+  }
+
+  &:focus,
+  &:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const NavList = styled.ul`
+  list-style: none;
+  display: ${(props) => (props.open ? 'block' : 'none')};
+
+  @media (min-width: 700px) {
+    display: block;
+  }
+`;
+
+const NavItem = styled.li`
+  margin-bottom: 1em;
+  display: block;
+
+  @media (min-width: 700px) {
+    display: inline-block;
+    margin-right: 1em;
+  }
+`;
+
 const NavLink = styled(Link)`
   text-decoration: none;
-  margin-left: 1em;
+  margin: 0 1em;
 
   &.active {
     padding-bottom: 0.5em;
@@ -32,24 +71,59 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Header = () => (
-  <HeaderContainer>
-    <h1>
-      <HeaderLink to="/">
-        short<strong>stack</strong>photography
-      </HeaderLink>
-    </h1>
-    <Spacer />
-    <NavLink to="/portfolio" activeClassName="active">
-      Portfolio
-    </NavLink>
-    <NavLink activeClassName="active" to="/services">
-      Services
-    </NavLink>
-    <NavLink activeClassName="active" to="/contact">
-      Contact
-    </NavLink>
-  </HeaderContainer>
-);
+class Header extends React.Component {
+  state = { open: false };
+
+  toggleMenu = () => this.setState((prevState) => ({ open: !prevState.open }));
+
+  render() {
+    const { open } = this.state;
+
+    return (
+      <header>
+        <HeaderText>
+          short<strong>stack</strong>photography
+        </HeaderText>
+        <NavContainer role="navigation">
+          <NavButton
+            id="toggle"
+            aria-expanded={open}
+            type="button"
+            onClick={this.toggleMenu}
+          >
+            Menu
+          </NavButton>
+          <NavList open={open}>
+            <NavItem>
+              <NavLink to="/" activeClassName="active">
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/galleries" activeClassName="active">
+                Galleries
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink activeClassName="active" to="/services">
+                Services
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink activeClassName="active" to="/contact">
+                Contact
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink activeClassName="active" to="/about">
+                About
+              </NavLink>
+            </NavItem>
+          </NavList>
+        </NavContainer>
+      </header>
+    );
+  }
+}
 
 export default Header;
