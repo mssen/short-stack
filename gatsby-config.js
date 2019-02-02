@@ -33,7 +33,7 @@ module.exports = {
         icon: 'src/images/camera.png',
       },
     },
-    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-contentful',
       options: {
@@ -41,6 +41,7 @@ module.exports = {
         accessToken,
       },
     },
+    'gatsby-transformer-remark',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
