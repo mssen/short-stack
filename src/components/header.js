@@ -15,6 +15,52 @@ const NavContainer = styled.nav`
   align-items: baseline;
 `;
 
+const NavButton = styled.button`
+  position: absolute;
+  left: 1em;
+  top: 0.8em;
+  padding: 8px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: 1em;
+  background: transparent;
+  color: #000;
+  display: block;
+
+  @media (min-width: 700px) {
+    display: none;
+  }
+
+  &:focus,
+  &:hover {
+    background: #fff;
+    color: #000;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const NavList = styled.ul`
+  list-style: none;
+  display: ${(props) => (props.open ? 'block' : 'none')};
+
+  @media (min-width: 700px) {
+    display: block;
+  }
+`;
+
+const NavItem = styled.li`
+  margin-bottom: 1em;
+  display: block;
+
+  @media (min-width: 700px) {
+    display: inline-block;
+    margin-right: 1em;
+  }
+`;
+
 const NavLink = styled(Link)`
   text-decoration: none;
   margin: 0 1em;
@@ -25,44 +71,59 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Header = () => (
-  <header>
-    <HeaderText>
-      short<strong>stack</strong>photography
-    </HeaderText>
-    <NavContainer role="navigation">
-      <button id="toggle" aria-expanded="false" type="button">
-        Menu
-      </button>
-      <ul id="menu">
-        <li>
-          <NavLink to="/" activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/galleries" activeClassName="active">
-            Galleries
-          </NavLink>
-        </li>
-      </ul>
-      <li>
-        <NavLink activeClassName="active" to="/services">
-          Services
-        </NavLink>
-      </li>
-      <li>
-        <NavLink activeClassName="active" to="/contact">
-          Contact
-        </NavLink>
-      </li>
-      <li>
-        <NavLink activeClassName="active" to="/about">
-          About
-        </NavLink>
-      </li>
-    </NavContainer>
-  </header>
-);
+class Header extends React.Component {
+  state = { open: false };
+
+  toggleMenu = () => this.setState((prevState) => ({ open: !prevState.open }));
+
+  render() {
+    const { open } = this.state;
+
+    return (
+      <header>
+        <HeaderText>
+          short<strong>stack</strong>photography
+        </HeaderText>
+        <NavContainer role="navigation">
+          <NavButton
+            id="toggle"
+            aria-expanded={open}
+            type="button"
+            onClick={this.toggleMenu}
+          >
+            Menu
+          </NavButton>
+          <NavList open={open}>
+            <NavItem>
+              <NavLink to="/" activeClassName="active">
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/galleries" activeClassName="active">
+                Galleries
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink activeClassName="active" to="/services">
+                Services
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink activeClassName="active" to="/contact">
+                Contact
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink activeClassName="active" to="/about">
+                About
+              </NavLink>
+            </NavItem>
+          </NavList>
+        </NavContainer>
+      </header>
+    );
+  }
+}
 
 export default Header;
