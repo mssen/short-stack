@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Missy Danielsen <missy.danielsen@gmail.com>",
   "dependencies": {
+    "@contentful/gatsby-transformer-contentful-richtext": "^13.0.0",
     "babel-plugin-styled-components": "^1.9.2",
     "dotenv": "^6.2.0",
     "gatsby": "^2.0.61",
