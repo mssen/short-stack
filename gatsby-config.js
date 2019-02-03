@@ -41,7 +41,6 @@ module.exports = {
         accessToken,
       },
     },
-    'gatsby-transformer-remark',
     '@contentful/gatsby-transformer-contentful-richtext',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
