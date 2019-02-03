@@ -15,7 +15,7 @@ const Services = () => (
                 title
                 price
                 description {
-                  childMarkdownRemark {
+                  childContentfulRichText {
                     html
                   }
                 }
@@ -34,7 +34,7 @@ const Services = () => (
             <div
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
-                __html: node.description.childMarkdownRemark.html,
+                __html: node.description.childContentfulRichText.html,
               }}
             />
           </section>

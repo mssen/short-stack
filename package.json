@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Missy Danielsen <missy.danielsen@gmail.com>",
   "dependencies": {
+    "@contentful/gatsby-transformer-contentful-richtext": "^13.0.0",
     "babel-plugin-styled-components": "^1.9.2",
     "dotenv": "^6.2.0",
     "gatsby": "^2.0.61",
@@ -15,7 +16,6 @@
     "gatsby-plugin-styled-components": "^3.0.4",
     "gatsby-source-contentful": "^2.0.20",
     "gatsby-source-filesystem": "^2.0.10",
-    "gatsby-transformer-remark": "^2.2.3",
     "gatsby-transformer-sharp": "^2.1.9",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
