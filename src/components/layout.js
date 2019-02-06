@@ -4,7 +4,8 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import styledNormalize from 'styled-normalize';
-import 'typeface-montserrat';
+import 'typeface-lato';
+import 'typeface-merriweather';
 
 import Header from './header';
 import SocialLinks from './socialLinks';
@@ -18,19 +19,25 @@ const GlobalStyle = createGlobalStyle`
   h3,
   h4,
   h5,
+  h6,
+  body {
+    color: #1f2933;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
   h6 {
-    font-family: Montserrat, sans-serif;
-    color: #5d5d81;
+    font-family: 'Merriweather', serif;
   }
 
   body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Lato, sans-serif;
     background-color: #ffffff;
     border-top: 3px solid ${th('main')};
-  }
-
-  a {
-    color: #8e5572;
+    background: #f5f7fA;
   }
 `;
 
