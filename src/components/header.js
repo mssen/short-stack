@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import 'typeface-dancing-script';
 
 const HeaderText = styled.h1`
   text-align: center;
   font-weight: normal;
-  font-size: 1.5rem;
+  font-family: 'Dancing Script', serif;
+  margin-bottom: 0;
 `;
 
 const NavContainer = styled.nav`
@@ -81,9 +83,7 @@ class Header extends React.Component {
 
     return (
       <header>
-        <HeaderText>
-          short<strong>stack</strong>photography
-        </HeaderText>
+        <HeaderText>Short Stack Photography</HeaderText>
         <NavContainer role="navigation">
           <NavButton
             id="toggle"

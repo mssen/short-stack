@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Layout from '../components/layout';
+import Button from '../style/button';
 
 const Contact = () => (
   <Layout>
@@ -22,7 +23,7 @@ const Contact = () => (
         </label>
       </p>
       <p>
-        <button type="submit">Send</button>
+        <Button type="submit">Send</Button>
       </p>
     </form>
   </Layout>
