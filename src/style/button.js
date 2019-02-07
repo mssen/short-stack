@@ -8,7 +8,7 @@ const Button = styled.button`
   border: none;
   color: white;
   cursor: pointer;
-  transition: background 250ms ease-in-out, transform 150ms ease;
+  transition: background 200ms ease-in-out, transform 100ms ease;
 
   text-transform: uppercase;
   font-size: 14px;
@@ -16,7 +16,7 @@ const Button = styled.button`
 
   &:hover,
   &:focus {
-    background: ${th('dark')};
+    background: ${th('mainDark')};
   }
 `;
 
