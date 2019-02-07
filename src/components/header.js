@@ -7,7 +7,7 @@ const HeaderText = styled.h1`
   text-align: center;
   font-weight: normal;
   font-family: 'Dancing Script', serif;
-  margin-bottom: 0;
+  margin: 1rem 0 0 0;
 `;
 
 const NavContainer = styled.nav`

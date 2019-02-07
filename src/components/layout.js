@@ -8,7 +8,7 @@ import 'typeface-lato';
 import 'typeface-merriweather';
 
 import Header from './header';
-import SocialLinks from './socialLinks';
+import Footer from './footer';
 import { theme, th } from '../style/theme';
 
 const GlobalStyle = createGlobalStyle`
@@ -44,6 +44,7 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.main`
   margin: auto;
   max-width: 1024px;
+  min-height: calc(100vh - 251px);
 `;
 
 const Layout = ({ children }) => (
@@ -72,7 +73,7 @@ const Layout = ({ children }) => (
           <GlobalStyle />
           <Header />
           <Container>{children}</Container>
-          <SocialLinks />
+          <Footer />
         </>
       </ThemeProvider>
     )}

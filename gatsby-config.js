@@ -42,6 +42,14 @@ module.exports = {
       },
     },
     '@contentful/gatsby-transformer-contentful-richtext',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          exclude: /node_modules/,
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
