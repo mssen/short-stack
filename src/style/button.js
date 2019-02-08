@@ -7,8 +7,9 @@ const Button = styled.button`
   border-radius: 2px;
   border: none;
   color: white;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
   transition: background 200ms ease-in-out, transform 100ms ease;
+  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
 
   text-transform: uppercase;
   font-size: 14px;
@@ -17,7 +18,7 @@ const Button = styled.button`
 
   &:hover,
   &:focus {
-    background: ${th('mainDark')};
+    background: ${({ disabled }) => (disabled ? th('main') : th('mainDark'))};
   }
 `;
 
