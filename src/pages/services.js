@@ -2,10 +2,11 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/layout';
+import PageHeader from '../style/pageHeader';
 
 const Services = () => (
   <Layout>
-    <h1>Services</h1>
+    <PageHeader>Services</PageHeader>
     <StaticQuery
       query={graphql`
         query Services {

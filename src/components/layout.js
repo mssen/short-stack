@@ -23,16 +23,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: #1f2933;
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Merriweather', serif;
-  }
-
+  
   body {
     font-family: Lato, sans-serif;
     background-color: #ffffff;

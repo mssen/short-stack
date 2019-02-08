@@ -3,10 +3,11 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import Button from '../style/button';
+import PageHeader from '../style/pageHeader';
 
 const Contact = () => (
   <Layout>
-    <h1>Contact</h1>
+    <PageHeader>Contact</PageHeader>
     <StaticQuery
       query={graphql`
         {
@@ -21,7 +22,7 @@ const Contact = () => (
       `}
       render={({ contentfulPage }) => (
         <React.Fragment>
-          <h2>Let&apos;s get in touch!</h2>
+          <h3>Let&apos;s get in touch!</h3>
           <article
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
