@@ -12,7 +12,8 @@ const Button = styled.button`
 
   text-transform: uppercase;
   font-size: 14px;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
 
   &:hover,
   &:focus {
