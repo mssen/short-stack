@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
-import Button from '../style/button';
+import ContactForm from '../components/contactForm';
 import PageHeader from '../style/pageHeader';
 
 const ContactContainer = styled.section`
@@ -47,26 +47,7 @@ const Contact = () => (
         />
       </div>
       <div>
-        <form name="contact" method="POST" data-netlify="true">
-          <p>
-            <label htmlFor="name">
-              Name: <input type="text" name="name" />
-            </label>
-          </p>
-          <p>
-            <label htmlFor="email">
-              Email: <input type="email" name="email" />
-            </label>
-          </p>
-          <p>
-            <label htmlFor="message">
-              Message: <textarea name="message" />
-            </label>
-          </p>
-          <p>
-            <Button type="submit">Send</Button>
-          </p>
-        </form>
+        <ContactForm />
       </div>
     </ContactContainer>
   </Layout>
