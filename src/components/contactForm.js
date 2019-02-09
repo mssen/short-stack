@@ -3,6 +3,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { navigateTo } from 'gatsby';
+import 'whatwg-fetch';
 
 import { th } from '../style/theme';
 import { FilledButton } from '../style/button';
