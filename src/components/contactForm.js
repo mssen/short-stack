@@ -58,14 +58,7 @@ class SimpleForm extends React.Component {
   render() {
     const { submitted } = this.state;
     return (
-      <form
-        name="contact"
-        method="POST"
-        action="/success"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        <input type="hidden" name="bot-field" />
+      <form name="contact" method="POST" action="/success" data-netlify="true">
         <label htmlFor="name">
           Name <Input type="text" name="name" required submitted={submitted} />
         </label>
