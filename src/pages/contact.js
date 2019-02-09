@@ -4,15 +4,32 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import ContactForm from '../components/contactForm';
+import SocialLinks from '../components/socialLinks';
 import PageHeader from '../style/pageHeader';
 
 const ContactContainer = styled.section`
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   grid-template-columns: 1fr;
+  margin-bottom: 1.5rem;
 
   @media (min-width: 700px) {
     grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const SocialLinksContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+
+  & > a {
+    margin-right: 1.5rem;
+  }
+
+  & > a > svg {
+    height: 35px;
+    width: 35px;
   }
 `;
 
@@ -20,32 +37,33 @@ const Contact = () => (
   <Layout>
     <PageHeader>Contact</PageHeader>
     <ContactContainer>
-      <div>
-        <StaticQuery
-          query={graphql`
-            {
-              contentfulPage(pageTitle: { eq: "Contact" }) {
-                text {
-                  childContentfulRichText {
-                    html
-                  }
+      <StaticQuery
+        query={graphql`
+          {
+            contentfulPage(pageTitle: { eq: "Contact" }) {
+              text {
+                childContentfulRichText {
+                  html
                 }
               }
             }
-          `}
-          render={({ contentfulPage }) => (
-            <React.Fragment>
-              <h3>Let&apos;s get in touch!</h3>
-              <article
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: contentfulPage.text.childContentfulRichText.html,
-                }}
-              />
-            </React.Fragment>
-          )}
-        />
-      </div>
+          }
+        `}
+        render={({ contentfulPage }) => (
+          <div>
+            <h3>Let&apos;s get in touch!</h3>
+            <article
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: contentfulPage.text.childContentfulRichText.html,
+              }}
+            />
+            <SocialLinksContainer>
+              <SocialLinks />
+            </SocialLinksContainer>
+          </div>
+        )}
+      />
       <div>
         <ContactForm />
       </div>
