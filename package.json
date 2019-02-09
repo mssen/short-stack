@@ -26,8 +26,7 @@
     "styled-normalize": "^8.0.6",
     "typeface-dancing-script": "0.0.54",
     "typeface-lato": "0.0.54",
-    "typeface-merriweather": "0.0.54",
-    "whatwg-fetch": "^3.0.0"
+    "typeface-merriweather": "0.0.54"
   },
   "keywords": [
     "gatsby"
