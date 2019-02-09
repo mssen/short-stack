@@ -85,12 +85,7 @@ class Header extends React.Component {
       <header>
         <HeaderText>Short Stack Photography</HeaderText>
         <NavContainer role="navigation">
-          <NavButton
-            id="toggle"
-            aria-expanded={open}
-            type="button"
-            onClick={this.toggleMenu}
-          >
+          <NavButton id="toggle" aria-expanded={open} type="button" onClick={this.toggleMenu}>
             Menu
           </NavButton>
           <NavList open={open}>

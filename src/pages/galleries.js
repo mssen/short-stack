@@ -3,10 +3,11 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import Layout from '../components/layout';
+import PageHeader from '../style/pageHeader';
 
 const Galleries = () => (
   <Layout>
-    <h1>Galleries</h1>
+    <PageHeader>Galleries</PageHeader>
     <StaticQuery
       query={graphql`
         {

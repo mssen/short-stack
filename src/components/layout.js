@@ -23,16 +23,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: #1f2933;
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Merriweather', serif;
-  }
-
+  
   body {
     font-family: Lato, sans-serif;
     background-color: #ffffff;
@@ -44,7 +35,12 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.main`
   margin: auto;
   max-width: 1024px;
-  min-height: calc(100vh - 251px);
+  min-height: calc(100vh - 179px);
+  padding: 0 1.5rem;
+
+  @media (min-width: 700px) {
+    min-height: calc(100vh - 245px);
+  }
 `;
 
 const Layout = ({ children }) => (
