@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
-import ContactForm from '../components/contactForm';
+import ContactForm from '../components/simpleContactForm';
 import SocialLinks from '../components/socialLinks';
 import PageHeader from '../style/pageHeader';
 
