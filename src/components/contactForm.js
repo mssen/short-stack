@@ -69,9 +69,7 @@ class SimpleForm extends React.Component {
           Message <Textarea name="message" required submitted={submitted} />
         </label>
         <ButtonContainer>
-          <FilledButton type="submit" onClick={this.onClick}>
-            Send
-          </FilledButton>
+          <FilledButton type="submit">Send</FilledButton>
         </ButtonContainer>
       </form>
     );
