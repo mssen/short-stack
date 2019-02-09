@@ -1,20 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { th } from './theme';
 
-const Button = styled.button`
+const button = css`
   padding: 0.75em 1em;
-  background: ${th('main')};
   border-radius: ${th('borderRadius')}px;
-  border: none;
-  color: white;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  cursor: pointer;
   transition: background 200ms ease-in-out, transform 100ms ease;
-  opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
 
   text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 0.1em;
   font-weight: bold;
+`;
+
+export const FilledButton = styled.button`
+${button}
+  background: ${th('main')};
+  border: none;
+  color: white;
 
   &:hover,
   &:focus {
@@ -22,4 +25,16 @@ const Button = styled.button`
   }
 `;
 
-export default Button;
+export const OutlinedButton = styled.button`
+  ${button}
+  background: transparent;
+  border: 2px solid ${th('main')};
+  color: ${th('main')};
+  transition: background 200ms ease-in-out, transform 100ms ease;
+
+  &:hover,
+  &:focus {
+    background: ${th('main')};
+    color: white;
+  }
+`;
