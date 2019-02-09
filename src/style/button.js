@@ -4,7 +4,7 @@ import { th } from './theme';
 const Button = styled.button`
   padding: 0.75em 1em;
   background: ${th('main')};
-  border-radius: 2px;
+  border-radius: ${th('borderRadius')}px;
   border: none;
   color: white;
   cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
