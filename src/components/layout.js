@@ -21,14 +21,13 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6,
   body {
-    color: #1f2933;
+    color: ${th('gray900')};
   }
   
   body {
     font-family: Lato, sans-serif;
-    background-color: #ffffff;
     border-top: 3px solid ${th('main')};
-    background: #f5f7fA;
+    background: ${th('offWhite')};
   }
 `;
 

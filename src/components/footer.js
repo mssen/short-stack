@@ -5,7 +5,7 @@ import SocialLinks from './socialLinks';
 import { th } from '../style/theme';
 
 const FooterContainer = styled.footer`
-  background: ${th('grayLight')};
+  background: ${th('gray100')};
   height: 75px;
   display: flex;
   align-items: center;
