@@ -44,7 +44,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  @media (max-width: 700px) {
+  @media (max-width: ${th('phone')}px) {
     & > button {
       flex: 1;
     }

@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import ContactForm from '../components/contactForm';
 import SocialLinks from '../components/socialLinks';
 import PageHeader from '../style/pageHeader';
+import { th } from '../style/theme';
 
 const ContactContainer = styled.section`
   display: grid;
@@ -13,7 +14,7 @@ const ContactContainer = styled.section`
   grid-template-columns: 1fr;
   margin-bottom: 1.5rem;
 
-  @media (min-width: 700px) {
+  @media (min-width: ${th('phone')}px) {
     grid-template-columns: 1fr 1fr;
   }
 `;

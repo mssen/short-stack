@@ -17,6 +17,10 @@ export const theme = {
 
   borderRadius: 2,
   fontSizes: [12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72],
+
+  desktop: 992,
+  tablet: 768,
+  phone: 576,
 };
 
 export const th = (property) => (props) => props.theme[property];

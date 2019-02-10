@@ -31,7 +31,7 @@ const NavButton = styled.button`
   color: #000;
   display: block;
 
-  @media (min-width: 700px) {
+  @media (min-width: ${th('phone')}px) {
     display: none;
   }
 
@@ -50,7 +50,7 @@ const NavList = styled.ul`
   list-style: none;
   display: ${(props) => (props.open ? 'block' : 'none')};
 
-  @media (min-width: 700px) {
+  @media (min-width: ${th('phone')}px) {
     display: block;
   }
 `;
@@ -59,7 +59,7 @@ const NavItem = styled.li`
   margin-bottom: 1em;
   display: block;
 
-  @media (min-width: 700px) {
+  @media (min-width: ${th('phone')}px) {
     display: inline-block;
     margin-right: 1em;
   }
