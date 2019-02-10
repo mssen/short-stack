@@ -3,6 +3,8 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import 'typeface-dancing-script';
 
+import { th } from '../style/theme';
+
 const HeaderText = styled.h1`
   text-align: center;
   font-weight: normal;
@@ -66,10 +68,13 @@ const NavItem = styled.li`
 const NavLink = styled(Link)`
   text-decoration: none;
   margin: 0 1em;
+  color: ${th('gray600')};
 
   &.active {
+    color: ${th('gray700')};
+    font-weight: bold;
     padding-bottom: 0.5em;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid ${th('main')};
   }
 `;
 
@@ -95,22 +100,22 @@ class Header extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/galleries" activeClassName="active">
+              <NavLink to="/galleries/" activeClassName="active">
                 Galleries
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink activeClassName="active" to="/services">
+              <NavLink to="/services/" activeClassName="active">
                 Services
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink activeClassName="active" to="/contact">
+              <NavLink to="/contact/" activeClassName="active">
                 Contact
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink activeClassName="active" to="/about">
+              <NavLink to="/about/" activeClassName="active">
                 About
               </NavLink>
             </NavItem>
