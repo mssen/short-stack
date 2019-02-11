@@ -30,7 +30,6 @@ export const OutlinedButton = styled.button`
   background: transparent;
   border: 2px solid ${th('main')};
   color: ${th('main')};
-  transition: background 200ms ease-in-out, transform 100ms ease;
 
   &:hover,
   &:focus {

@@ -21,24 +21,23 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6,
   body {
-    color: #1f2933;
+    color: ${th('gray900')};
   }
   
   body {
     font-family: Lato, sans-serif;
-    background-color: #ffffff;
     border-top: 3px solid ${th('main')};
-    background: #f5f7fA;
+    background: ${th('offWhite')};
   }
 `;
 
 const Container = styled.main`
   margin: auto;
   max-width: 1024px;
-  min-height: calc(100vh - 179px);
+  min-height: calc(100vh - 163px);
   padding: 0 1.5rem;
 
-  @media (min-width: 700px) {
+  @media (min-width: ${th('phone')}px) {
     min-height: calc(100vh - 245px);
   }
 `;
