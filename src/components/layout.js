@@ -42,7 +42,7 @@ const Container = styled.main`
   padding: 0 1.5rem;
 
   @media (min-width: ${th('phone')}px) {
-    min-height: calc(100vh - 245px);
+    min-height: calc(100vh - 229px);
   }
 `;
 
