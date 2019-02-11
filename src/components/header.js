@@ -1,15 +1,27 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import 'typeface-dancing-script';
 
 import { th } from '../style/theme';
+import NavIcon from './navIcon';
+
+const HeaderContainer = styled.div`
+  display: flex;
+  margin-right: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: ${th('phone')}px) {
+    justify-content: space-between;
+  }
+`;
 
 const HeaderText = styled.h1`
   text-align: center;
   font-weight: normal;
   font-family: 'Dancing Script', serif;
-  margin: 1rem 0 0 0;
+  margin: 0;
 `;
 
 const NavContainer = styled.nav`
@@ -17,38 +29,28 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: baseline;
-`;
 
-const NavButton = styled.button`
-  position: absolute;
-  left: 1em;
-  top: 0.8em;
-  padding: 8px;
-  border: 2px solid #000;
-  border-radius: 5px;
-  font-size: 1em;
-  background: transparent;
-  color: #000;
-  display: block;
-
-  @media (min-width: ${th('phone')}px) {
-    display: none;
-  }
-
-  &:focus,
-  &:hover {
-    background: #fff;
-    color: #000;
-  }
-
-  &:hover {
-    cursor: pointer;
+  @media (max-width: ${th('phone')}px) {
+    background-color: ${th('gray200')};
+    display: ${(props) => (props.open ? 'flex' : 'none')};
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 `;
 
 const NavList = styled.ul`
   list-style: none;
   display: ${(props) => (props.open ? 'block' : 'none')};
+
+  @media (max-width: ${th('phone')}px) {
+    padding: 0;
+    margin-top: 3rem;
+  }
 
   @media (min-width: ${th('phone')}px) {
     display: block;
@@ -59,6 +61,10 @@ const NavItem = styled.li`
   margin-bottom: 1em;
   display: block;
 
+  @media (max-width: ${th('phone')}px) {
+    margin-top: 1.5rem;
+  }
+
   @media (min-width: ${th('phone')}px) {
     display: inline-block;
     margin-right: 1em;
@@ -67,15 +73,38 @@ const NavItem = styled.li`
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  margin: 0 1em;
   color: ${th('gray600')};
 
   &.active {
     color: ${th('gray700')};
     font-weight: bold;
-    padding-bottom: 0.5em;
-    border-bottom: 2px solid ${th('main')};
   }
+
+  @media (max-width: ${th('phone')}px) {
+    font-size: 24px;
+
+    &.active {
+      color: ${th('gray700')};
+      font-weight: bold;
+      padding-left: 0.5em;
+      border-left: 2px solid ${th('main')};
+    }
+  }
+
+  @media (min-width: ${th('phone')}px) {
+    margin: 0 1em;
+
+    &.active {
+      padding-bottom: 0.5em;
+      border-bottom: 2px solid ${th('main')};
+    }
+  }
+`;
+
+const BodyScroll = createGlobalStyle`
+body {
+  overflow: ${({ open }) => (open ? 'hidden' : 'auto')};
+}
 `;
 
 class Header extends React.Component {
@@ -88,11 +117,18 @@ class Header extends React.Component {
 
     return (
       <header>
-        <HeaderText>Short Stack Photography</HeaderText>
-        <NavContainer role="navigation">
-          <NavButton id="toggle" aria-expanded={open} type="button" onClick={this.toggleMenu}>
-            Menu
-          </NavButton>
+        <BodyScroll open={open} />
+        <HeaderContainer>
+          <NavIcon
+            open={open}
+            id="toggle"
+            aria-expanded={open}
+            type="button"
+            onClick={this.toggleMenu}
+          />
+          <HeaderText>Short Stack Photography</HeaderText>
+        </HeaderContainer>
+        <NavContainer role="navigation" open={open}>
           <NavList open={open}>
             <NavItem>
               <NavLink to="/" activeClassName="active">
