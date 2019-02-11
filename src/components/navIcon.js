@@ -6,11 +6,11 @@ import { th } from '../style/theme';
 
 const menuOpen = css`
   &:before {
-    transform: translateY(12px) rotate(135deg);
+    transform: translateY(10px) rotate(135deg);
   }
 
   &:after {
-    transform: translateY(-12px) rotate(-135deg);
+    transform: translateY(-10px) rotate(-135deg);
   }
 
   & div {
@@ -20,10 +20,15 @@ const menuOpen = css`
 
 const Container = styled.button`
   margin: 1em;
-  width: 40px;
+  width: 35px;
   padding: 0;
   border: none;
   background: transparent;
+  z-index: 100;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   &:after,
   &:before,
@@ -32,16 +37,20 @@ const Container = styled.button`
     border-radius: 3px;
     content: '';
     display: block;
-    height: 5px;
-    margin: 7px 0;
+    height: 4px;
+    margin: 6px 0;
     transition: all 0.2s ease-in-out;
   }
 
   ${({ open }) => (open ? menuOpen : '')}
+
+  @media (min-width: ${th('phone')}px) {
+    display: none;
+  }
 `;
 
-const NavIcon = ({ open }) => (
-  <Container open={open}>
+const NavIcon = ({ open, ...props }) => (
+  <Container open={open} {...props}>
     <div />
   </Container>
 );
