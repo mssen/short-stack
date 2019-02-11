@@ -23,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: ${th('gray900')};
   }
+
+  p {
+    line-height: 1.5;
+  }
   
   body {
     font-family: Lato, sans-serif;
