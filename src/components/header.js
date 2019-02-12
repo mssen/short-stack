@@ -20,7 +20,12 @@ const HeaderText = styled.h1`
   text-align: center;
   font-weight: normal;
   font-family: 'Dancing Script', serif;
+  font-size: 36px;
   margin: 1rem 0 0 0;
+
+  @media (max-width: ${th('phone')}px) {
+    font-size: 30px;
+  }
 `;
 
 const NavContainer = styled.nav`
