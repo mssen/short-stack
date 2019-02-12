@@ -1,8 +1,83 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
+import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import PageHeader from '../style/pageHeader';
+import { FilledButton, ButtonContainer } from '../style/button';
+import { th } from '../style/theme';
+
+const GridContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1rem;
+`;
+
+const Card = styled.section`
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
+  margin-bottom: 3rem;
+`;
+
+const GridCard = styled(Card)`
+  flex: 1 1 300px;
+
+  margin-right: 1rem;
+`;
+
+const CardHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background: ${th('main')};
+  border-radius: 4px 4px 0 0;
+  padding: 1.5rem;
+
+  & > h3 {
+    margin: 0;
+    color: white;
+  }
+`;
+
+const GridCardBody = styled.article`
+  padding: 2rem;
+  padding-top: 0;
+`;
+
+const CardBody = styled.article`
+  padding: 2rem;
+
+  & > h4 {
+    margin-top: 3rem;
+    white-space: pre-wrap;
+  }
+
+  & > h4:first-child {
+    margin-top: 0;
+  }
+`;
+
+const PriceContainer = styled.p`
+  padding: 1.5rem;
+  padding-bottom: 0;
+  margin-bottom: -1.5rem;
+  margin: 0;
+`;
+
+const Price = styled.span`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const Duration = styled.span`
+  color: ${th('gray500')};
+`;
+
+const BigButton = styled(FilledButton)`
+  font-size: 24px;
+  margin: auto;
+`;
 
 const Services = () => (
   <Layout>
@@ -13,8 +88,10 @@ const Services = () => (
           allContentfulService {
             edges {
               node {
+                order
                 title
                 price
+                priceSecondayText
                 description {
                   childContentfulRichText {
                     html
@@ -25,22 +102,50 @@ const Services = () => (
           }
         }
       `}
-      render={({ allContentfulService: { edges } }) =>
-        edges.map(({ node }) => (
-          <section>
-            <header>
-              <h3>{node.title}</h3>
-              <p>{node.price}</p>
-            </header>
-            <div
-              // eslint-disable-next-line react/no-danger
+      render={({ allContentfulService: { edges } }) => {
+        const sorted = edges
+          .map(({ node }) => node)
+          .sort((left, right) => left.order - right.order);
+        const last = sorted.slice(-1).pop();
+        const grid = sorted.slice(0, -1);
+
+        const gridList = grid.map((item) => (
+          <GridCard>
+            <CardHeader>
+              <h3>{item.title}</h3>
+            </CardHeader>
+            <PriceContainer>
+              <Price>${item.price}</Price> <Duration>/ {item.priceSecondayText}</Duration>
+            </PriceContainer>
+            <GridCardBody
               dangerouslySetInnerHTML={{
-                __html: node.description.childContentfulRichText.html,
+                __html: item.description.childContentfulRichText.html,
               }}
             />
-          </section>
-        ))
-      }
+          </GridCard>
+        ));
+
+        return (
+          <React.Fragment>
+            <GridContainer>{gridList}</GridContainer>
+            <Card>
+              <CardHeader>
+                <h3>{last.title}</h3>
+              </CardHeader>
+              <CardBody
+                dangerouslySetInnerHTML={{
+                  __html: last.description.childContentfulRichText.html,
+                }}
+              />
+            </Card>
+            <ButtonContainer>
+              <Link to="/contact/">
+                <BigButton>Get in touch</BigButton>
+              </Link>
+            </ButtonContainer>
+          </React.Fragment>
+        );
+      }}
     />
   </Layout>
 );

@@ -10,7 +10,6 @@ const HeaderContainer = styled.div`
   display: flex;
   margin-right: 1rem;
   justify-content: center;
-  align-items: center;
 
   @media (max-width: ${th('phone')}px) {
     justify-content: space-between;
@@ -21,7 +20,12 @@ const HeaderText = styled.h1`
   text-align: center;
   font-weight: normal;
   font-family: 'Dancing Script', serif;
-  margin: 0;
+  font-size: 36px;
+  margin: 1rem 0 0 0;
+
+  @media (max-width: ${th('phone')}px) {
+    font-size: 30px;
+  }
 `;
 
 const NavContainer = styled.nav`
@@ -74,6 +78,7 @@ const NavItem = styled.li`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: ${th('gray600')};
+  font-size: 20px;
 
   &.active {
     color: ${th('gray700')};

@@ -37,3 +37,14 @@ export const OutlinedButton = styled.button`
     color: white;
   }
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: ${({ justify }) => justify || 'center'};
+
+  @media (max-width: ${th('phone')}px) {
+    & > button {
+      flex: 1;
+    }
+  }
+`;
