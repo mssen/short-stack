@@ -12,10 +12,6 @@ const Image = styled(Img)`
   border-radius: 5px;
 `;
 
-const Container = styled.section`
-  margin-bottom: 2rem;
-`;
-
 const Article = styled.article`
   max-width: 35em;
   margin: auto;
@@ -42,7 +38,7 @@ const About = () => (
         }
       `}
       render={({ contentfulPage }) => (
-        <Container>
+        <section>
           <Image fluid={contentfulPage.picture.fluid} />
           <Article
             // eslint-disable-next-line react/no-danger
@@ -50,7 +46,7 @@ const About = () => (
               __html: contentfulPage.text.childContentfulRichText.html,
             }}
           />
-        </Container>
+        </section>
       )}
     />
   </Layout>

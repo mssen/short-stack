@@ -31,18 +31,18 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: Lato, sans-serif;
     border-top: 3px solid ${th('main')};
-    background: ${th('offWhite')};
+    background-color: ${th('offWhite')};
   }
 `;
 
 const Container = styled.main`
   margin: auto;
   max-width: 1024px;
-  min-height: calc(100vh - 163px);
+  min-height: calc(100vh - 302px);
   padding: 0 1.5rem;
 
-  @media (min-width: ${th('phone')}px) {
-    min-height: calc(100vh - 229px);
+  @media (max-width: ${th('phone')}px) {
+    min-height: calc(100vh - 209px);
   }
 `;
 

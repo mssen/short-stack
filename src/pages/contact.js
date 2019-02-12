@@ -12,7 +12,6 @@ const ContactContainer = styled.section`
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 1fr;
-  margin-bottom: 1.5rem;
 
   @media (min-width: ${th('phone')}px) {
     grid-template-columns: 1fr 1fr;
