@@ -78,6 +78,7 @@ const NavItem = styled.li`
 const NavLink = styled(Link)`
   text-decoration: none;
   color: ${th('gray600')};
+  font-size: 20px;
 
   &.active {
     color: ${th('gray700')};
