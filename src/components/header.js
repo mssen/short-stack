@@ -10,7 +10,6 @@ const HeaderContainer = styled.div`
   display: flex;
   margin-right: 1rem;
   justify-content: center;
-  align-items: center;
 
   @media (max-width: ${th('phone')}px) {
     justify-content: space-between;
@@ -21,7 +20,7 @@ const HeaderText = styled.h1`
   text-align: center;
   font-weight: normal;
   font-family: 'Dancing Script', serif;
-  margin: 0;
+  margin: 1rem 0 0 0;
 `;
 
 const NavContainer = styled.nav`
