@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { navigateTo } from 'gatsby';
 
 import { th } from '../style/theme';
-import { FilledButton } from '../style/button';
+import { FilledButton, ButtonContainer } from '../style/button';
 
 const formField = css`
   border: 1px solid #7b8794;
@@ -38,17 +38,6 @@ const Input = styled.input`
 const Textarea = styled.textarea`
   ${formField}
   min-height: 100px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  @media (max-width: ${th('phone')}px) {
-    & > button {
-      flex: 1;
-    }
-  }
 `;
 
 function encode(data) {
@@ -118,7 +107,7 @@ class SimpleForm extends React.Component {
           Message
           <Textarea name="message" required submitted={submitted} onChange={this.handleChange} />
         </label>
-        <ButtonContainer>
+        <ButtonContainer justify="flex-end">
           <FilledButton type="submit">Send</FilledButton>
         </ButtonContainer>
       </form>
