@@ -1,9 +1,10 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import PageHeader from '../style/pageHeader';
+import { FilledButton, ButtonContainer } from '../style/button';
 import { th } from '../style/theme';
 
 const GridContainer = styled.div`
@@ -16,11 +17,13 @@ const Card = styled.section`
   border-radius: 4px;
   background: white;
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
+  margin-bottom: 3rem;
+`;
 
+const GridCard = styled(Card)`
   flex: 1 1 300px;
 
   margin-right: 1rem;
-  margin-bottom: 3rem;
 `;
 
 const CardHeader = styled.header`
@@ -37,12 +40,29 @@ const CardHeader = styled.header`
   }
 `;
 
-const CardBody = styled.article`
-  padding: 1.5rem;
+const GridCardBody = styled.article`
+  padding: 2rem;
+  padding-top: 0;
+`;
 
-  & > p {
-    margin: 0;
+const CardBody = styled.article`
+  padding: 2rem;
+
+  & > h4 {
+    margin-top: 3rem;
+    white-space: pre-wrap;
   }
+
+  & > h4:first-child {
+    margin-top: 0;
+  }
+`;
+
+const PriceContainer = styled.p`
+  padding: 1.5rem;
+  padding-bottom: 0;
+  margin-bottom: -1.5rem;
+  margin: 0;
 `;
 
 const Price = styled.span`
@@ -52,6 +72,11 @@ const Price = styled.span`
 
 const Duration = styled.span`
   color: ${th('gray500')};
+`;
+
+const BigButton = styled(FilledButton)`
+  font-size: 24px;
+  margin: auto;
 `;
 
 const Services = () => (
@@ -85,38 +110,39 @@ const Services = () => (
         const grid = sorted.slice(0, -1);
 
         const gridList = grid.map((item) => (
-          <Card>
+          <GridCard>
             <CardHeader>
               <h3>{item.title}</h3>
             </CardHeader>
-            <CardBody>
-              <p>
-                <Price>${item.price}</Price> <Duration>/ {item.priceSecondayText}</Duration>
-              </p>
-              <p
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: item.description.childContentfulRichText.html,
-                }}
-              />
-            </CardBody>
-          </Card>
+            <PriceContainer>
+              <Price>${item.price}</Price> <Duration>/ {item.priceSecondayText}</Duration>
+            </PriceContainer>
+            <GridCardBody
+              dangerouslySetInnerHTML={{
+                __html: item.description.childContentfulRichText.html,
+              }}
+            />
+          </GridCard>
         ));
 
         return (
           <React.Fragment>
             <GridContainer>{gridList}</GridContainer>
-            <section>
-              <header>
+            <Card>
+              <CardHeader>
                 <h3>{last.title}</h3>
-              </header>
-              <div
-                // eslint-disable-next-line react/no-danger
+              </CardHeader>
+              <CardBody
                 dangerouslySetInnerHTML={{
                   __html: last.description.childContentfulRichText.html,
                 }}
               />
-            </section>
+            </Card>
+            <ButtonContainer>
+              <Link to="/contact/">
+                <BigButton>Get in touch</BigButton>
+              </Link>
+            </ButtonContainer>
           </React.Fragment>
         );
       }}
