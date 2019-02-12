@@ -17,7 +17,7 @@ const Card = styled.section`
   background: white;
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
 
-  flex: 1 1 250px;
+  flex: 1 1 300px;
 
   margin-right: 1rem;
   margin-bottom: 3rem;
