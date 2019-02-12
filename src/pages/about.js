@@ -12,44 +12,46 @@ const Image = styled(Img)`
   border-radius: 5px;
 `;
 
+const Container = styled.section`
+  margin-bottom: 2rem;
+`;
+
+const Article = styled.article`
+  max-width: 35em;
+  margin: auto;
+`;
+
 const About = () => (
   <Layout>
     <PageHeader>About</PageHeader>
     <StaticQuery
       query={graphql`
         {
-          allContentfulAbout {
-            edges {
-              node {
-                picture {
-                  fluid(maxWidth: 750) {
-                    ...GatsbyContentfulFluid_withWebp_noBase64
-                  }
-                }
-                body {
-                  childContentfulRichText {
-                    html
-                  }
-                }
+          contentfulPage(pageTitle: { eq: "About" }) {
+            text {
+              childContentfulRichText {
+                html
+              }
+            }
+            picture {
+              fluid(maxWidth: 750) {
+                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
           }
         }
       `}
-      render={({ allContentfulAbout: { edges } }) => {
-        const about = edges[0].node;
-
-        return (
-          <React.Fragment>
-            <Image fluid={about.picture.fluid} />
-            <article // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: about.body.childContentfulRichText.html,
-              }}
-            />
-          </React.Fragment>
-        );
-      }}
+      render={({ contentfulPage }) => (
+        <Container>
+          <Image fluid={contentfulPage.picture.fluid} />
+          <Article
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: contentfulPage.text.childContentfulRichText.html,
+            }}
+          />
+        </Container>
+      )}
     />
   </Layout>
 );
