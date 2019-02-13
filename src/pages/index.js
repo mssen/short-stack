@@ -3,6 +3,7 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
+import Testimonials from '../components/testimonials';
 import { BigButton, ButtonContainer } from '../style/button';
 import Image from '../style/image';
 import ArrowIcon from '../images/arrow.svg';
@@ -42,6 +43,7 @@ const IndexPage = () => (
         </BigButton>
       </Link>
     </GalleryButton>
+    <Testimonials />
   </Layout>
 );
 
