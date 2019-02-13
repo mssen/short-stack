@@ -39,19 +39,19 @@ const SocialLinks = () => (
         switch (node.type) {
           case 'Facebook':
             return (
-              <IconLink href={node.url} alt="Facebook Link">
+              <IconLink href={node.url} alt="Facebook Link" key="facebook">
                 <FacebookIcon />
               </IconLink>
             );
           case 'Instagram':
             return (
-              <IconLink href={node.url} alt="Instagram Link">
+              <IconLink href={node.url} alt="Instagram Link" key="instagram">
                 <InstagramIcon />
               </IconLink>
             );
           case 'Email':
             return (
-              <IconLink href={node.email} alt="Email Link">
+              <IconLink href={node.email} alt="Email Link" key="email">
                 <EmailIcon />
               </IconLink>
             );
