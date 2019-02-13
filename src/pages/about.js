@@ -1,15 +1,14 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import PageHeader from '../style/pageHeader';
+import Image from '../style/image';
 
-const Image = styled(Img)`
+const AboutImage = styled(Image)`
   max-width: 750px;
   margin: auto;
-  border-radius: 5px;
 `;
 
 const Article = styled.article`
@@ -39,7 +38,7 @@ const About = () => (
       `}
       render={({ contentfulPage }) => (
         <section>
-          <Image fluid={contentfulPage.picture.fluid} />
+          <AboutImage fluid={contentfulPage.picture.fluid} />
           <Article
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
