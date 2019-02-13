@@ -8,11 +8,11 @@ import NavIcon from './navIcon';
 
 const HeaderContainer = styled.div`
   display: flex;
-  margin-right: 1rem;
   justify-content: center;
 
   @media (max-width: ${th('phone')}px) {
     justify-content: space-between;
+    margin-right: 1rem;
   }
 `;
 
