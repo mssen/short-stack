@@ -38,6 +38,11 @@ export const OutlinedButton = styled.button`
   }
 `;
 
+export const BigButton = styled(FilledButton)`
+  font-size: 24px;
+  margin: auto;
+`;
+
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: ${({ justify }) => justify || 'center'};

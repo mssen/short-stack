@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import PageHeader from '../style/pageHeader';
-import { FilledButton, ButtonContainer } from '../style/button';
+import { BigButton, ButtonContainer } from '../style/button';
 import { th } from '../style/theme';
 
 const GridContainer = styled.div`
@@ -72,11 +72,6 @@ const Price = styled.span`
 
 const Duration = styled.span`
   color: ${th('gray500')};
-`;
-
-const BigButton = styled(FilledButton)`
-  font-size: 24px;
-  margin: auto;
 `;
 
 const Services = () => (
