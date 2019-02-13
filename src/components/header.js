@@ -141,8 +141,8 @@ class Header extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/galleries/" activeClassName="active">
-                Galleries
+              <NavLink to="/gallery/" activeClassName="active">
+                Gallery
               </NavLink>
             </NavItem>
             <NavItem>
