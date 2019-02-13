@@ -51,7 +51,7 @@ const SocialLinks = () => (
             );
           case 'Email':
             return (
-              <IconLink href={node.email} alt="Email Link" key="email">
+              <IconLink href={`mailto:${node.email}`} alt="Email Link" key="email">
                 <EmailIcon />
               </IconLink>
             );
