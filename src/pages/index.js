@@ -21,7 +21,7 @@ const IndexPage = () => (
   <Layout>
     <StaticQuery
       query={graphql`
-        {
+        query HomeQuery {
           contentfulGallery(slug: { eq: "home" }) {
             photos {
               fluid(maxWidth: 1024) {
@@ -29,21 +29,42 @@ const IndexPage = () => (
               }
             }
           }
+          allContentfulTestmimonial {
+            edges {
+              node {
+                id
+                client
+                body {
+                  body
+                }
+              }
+            }
+          }
         }
       `}
-      render={({ contentfulGallery }) => {
+      render={({ contentfulGallery, allContentfulTestmimonial }) => {
         const [photo] = contentfulGallery.photos;
-        return <Image fluid={photo.fluid} />;
+        const quotes = allContentfulTestmimonial.edges.map(({ node }) => ({
+          key: node.id,
+          client: node.client,
+          message: node.body.body,
+        }));
+
+        return (
+          <React.Fragment>
+            <Image fluid={photo.fluid} />
+            <GalleryButton>
+              <Link to="/gallery/">
+                <BigButton>
+                  View Gallery <Icon />
+                </BigButton>
+              </Link>
+            </GalleryButton>
+            <Testimonials quotes={quotes} />
+          </React.Fragment>
+        );
       }}
     />
-    <GalleryButton>
-      <Link to="/gallery/">
-        <BigButton>
-          View Gallery <Icon />
-        </BigButton>
-      </Link>
-    </GalleryButton>
-    <Testimonials />
   </Layout>
 );
 

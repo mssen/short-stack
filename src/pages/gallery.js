@@ -8,10 +8,13 @@ import PageHeader from '../style/pageHeader';
 import Image from '../style/image';
 
 const GalleryGrid = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-  grid-gap: 1rem;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const GridImage = styled.div`
+  flex: 1 1 450px;
+  margin: 1rem;
 `;
 
 class Gallery extends React.Component {
@@ -45,10 +48,10 @@ class Gallery extends React.Component {
           {
             contentfulGallery(slug: { eq: "everything" }) {
               photos {
-                fixed(width: 450, height: 500) {
-                  ...GatsbyContentfulFixed_withWebp_noBase64
+                thumbnail: fluid(maxWidth: 450, maxHeight: 450) {
+                  ...GatsbyContentfulFluid_withWebp_noBase64
                 }
-                fluid(maxWidth: 1024) {
+                full: fluid(maxWidth: 1024) {
                   ...GatsbyContentfulFluid_withWebp_noBase64
                 }
               }
@@ -59,7 +62,8 @@ class Gallery extends React.Component {
           const { currentImage, lightbox } = this.state;
 
           const lightboxPhotos = contentfulGallery.photos.map((photo) => ({
-            srcSet: photo.fluid.srcSet,
+            srcSet: photo.full.srcSet,
+            src: photo.full.src,
           }));
 
           return (
@@ -67,11 +71,17 @@ class Gallery extends React.Component {
               <PageHeader>Gallery</PageHeader>
 
               <GalleryGrid>
-                {contentfulGallery.photos.map(({ fixed }, index) => (
-                  <a href={fixed.src} onClick={(event) => this.openLightbox(index, event)}>
-                    {/* eslint-disable-next-line react/no-array-index-key */}
-                    <Image key={index} fixed={fixed} />
-                  </a>
+                {contentfulGallery.photos.map(({ thumbnail }, index) => (
+                  <GridImage>
+                    <a
+                      href={thumbnail.src}
+                      key={thumbnail.src}
+                      onClick={(event) => this.openLightbox(index, event)}
+                    >
+                      {/* eslint-disable-next-line react/no-array-index-key */}
+                      <Image key={index} fluid={thumbnail} />
+                    </a>
+                  </GridImage>
                 ))}
               </GalleryGrid>
               <Lightbox
