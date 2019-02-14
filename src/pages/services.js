@@ -10,7 +10,7 @@ import { th } from '../style/theme';
 const GridContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-right: -2rem;
+  margin-left: -2rem;
 `;
 
 const Card = styled.section`
@@ -22,8 +22,7 @@ const Card = styled.section`
 
 const GridCard = styled(Card)`
   flex: 1 1 300px;
-
-  margin-right: 2rem;
+  margin-left: 2rem;
 `;
 
 const CardHeader = styled.header`
