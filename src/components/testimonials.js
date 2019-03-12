@@ -77,7 +77,7 @@ class Testimonials extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       this.nextQuote();
-    }, 8000);
+    }, 20000);
   }
 
   componentWillUnmount() {
