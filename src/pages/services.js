@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import PageHeader from '../style/pageHeader';
 import { BigButton, ButtonContainer } from '../style/button';
 import { th } from '../style/theme';
+import SmallerContainer from '../style/smallerConatiner';
 
 const GridContainer = styled.div`
   display: flex;
@@ -120,7 +121,7 @@ const Services = () => (
         ));
 
         return (
-          <React.Fragment>
+          <SmallerContainer>
             <GridContainer>{gridList}</GridContainer>
             <Card>
               <CardHeader>
@@ -137,7 +138,7 @@ const Services = () => (
                 <BigButton>Get in touch</BigButton>
               </Link>
             </ButtonContainer>
-          </React.Fragment>
+          </SmallerContainer>
         );
       }}
     />

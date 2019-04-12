@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import Testimonials from '../components/testimonials';
 import { BigButton, ButtonContainer } from '../style/button';
 import Image from '../style/image';
+import SmallerContainer from '../style/smallerConatiner';
 import ArrowIcon from '../images/arrow.svg';
 
 const GalleryButton = styled(ButtonContainer)`
@@ -51,7 +52,7 @@ const IndexPage = () => (
         }));
 
         return (
-          <React.Fragment>
+          <SmallerContainer>
             <Image fluid={photo.fluid} />
             <GalleryButton>
               <Link to="/gallery/">
@@ -61,7 +62,7 @@ const IndexPage = () => (
               </Link>
             </GalleryButton>
             <Testimonials quotes={quotes} />
-          </React.Fragment>
+          </SmallerContainer>
         );
       }}
     />

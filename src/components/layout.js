@@ -37,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.main`
   margin: auto;
-  max-width: 1024px;
+  max-width: 1600px;
   min-height: calc(100vh - 302px);
   padding: 0 1.5rem;
 
