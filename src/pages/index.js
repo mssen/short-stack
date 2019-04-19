@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import 'core-js/features/array/fill';
 
 import Layout from '../components/layout';
 import Testimonials from '../components/testimonials';
