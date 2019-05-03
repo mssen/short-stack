@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 /**
  * Hook to get a column count based on the current window width.
  *
- * @param {number[]} sizes window width breakpoints
+ * @param {number[]} queries media query breakpoints
  * @param {number[]} values column values
  * @param {number} defaultValue default column count
  */
