@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import styled, { createGlobalStyle } from 'styled-components';
 import 'typeface-dancing-script';
@@ -112,59 +112,49 @@ body {
 }
 `;
 
-class Header extends React.Component {
-  state = { open: false };
+const Header = () => {
+  const [open, setOpen] = useState(false);
 
-  toggleMenu = () => this.setState((prevState) => ({ open: !prevState.open }));
+  const toggleMenu = () => setOpen(!open);
 
-  render() {
-    const { open } = this.state;
-
-    return (
-      <header>
-        <BodyScroll open={open} />
-        <HeaderContainer>
-          <NavIcon
-            open={open}
-            id="toggle"
-            aria-expanded={open}
-            type="button"
-            onClick={this.toggleMenu}
-          />
-          <HeaderText>Short Stack Photography</HeaderText>
-        </HeaderContainer>
-        <NavContainer role="navigation" open={open}>
-          <NavList open={open}>
-            <NavItem>
-              <NavLink to="/" activeClassName="active">
-                Home
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/gallery/" activeClassName="active">
-                Gallery
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/services/" activeClassName="active">
-                Services
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/contact/" activeClassName="active">
-                Contact
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/about/" activeClassName="active">
-                About
-              </NavLink>
-            </NavItem>
-          </NavList>
-        </NavContainer>
-      </header>
-    );
-  }
-}
+  return (
+    <header>
+      <BodyScroll open={open} />
+      <HeaderContainer>
+        <NavIcon open={open} id="toggle" aria-expanded={open} type="button" onClick={toggleMenu} />
+        <HeaderText>Short Stack Photography</HeaderText>
+      </HeaderContainer>
+      <NavContainer role="navigation" open={open}>
+        <NavList open={open}>
+          <NavItem>
+            <NavLink to="/" activeClassName="active">
+              Home
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/gallery/" activeClassName="active">
+              Gallery
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/services/" activeClassName="active">
+              Services
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/contact/" activeClassName="active">
+              Contact
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/about/" activeClassName="active">
+              About
+            </NavLink>
+          </NavItem>
+        </NavList>
+      </NavContainer>
+    </header>
+  );
+};
 
 export default Header;

@@ -6,9 +6,10 @@ import Layout from '../components/layout';
 import ContactForm from '../components/contactForm';
 import SocialLinks from '../components/socialLinks';
 import PageHeader from '../style/pageHeader';
+import SmallerContainer from '../style/smallerConatiner';
 import { th } from '../style/theme';
 
-const ContactContainer = styled.section`
+const ContactContainer = styled(SmallerContainer)`
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 1fr;
