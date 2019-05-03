@@ -49,9 +49,13 @@ const Masonry = ({ thumbnails, lightboxPhotos }) => {
 
   const closeLightbox = () => setLightboxOpen(false);
 
-  const columns = new Array(columnCount).fill().map(() => []);
+  const columns = new Array(columnCount);
   thumbnails.photos.forEach(({ thumbnail }, index) => {
-    columns[index % columnCount].push(thumbnail);
+    const columnIndex = index % columnCount;
+    if (!columns[columnIndex]) {
+      columns[columnIndex] = [];
+    }
+    columns[columnIndex].push(thumbnail);
   });
 
   return (
