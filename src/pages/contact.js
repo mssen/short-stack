@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Layout from '../components/layout';
 import ContactForm from '../components/contactForm';
 import SocialLinks from '../components/socialLinks';
+import BlackoutDays from '../components/blackoutDays';
 import PageHeader from '../style/pageHeader';
 import SmallerContainer from '../style/smallerConatiner';
 import { th } from '../style/theme';
@@ -62,6 +63,7 @@ const Contact = () => (
             <SocialLinksContainer>
               <SocialLinks />
             </SocialLinksContainer>
+            <BlackoutDays />
           </div>
         )}
       />
