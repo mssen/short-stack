@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { navigateTo } from 'gatsby';
+import { StaticQuery, graphql, navigateTo } from 'gatsby';
 
 import { th } from '../style/theme';
 import { FilledButton, ButtonContainer } from '../style/button';
@@ -40,6 +40,12 @@ const Textarea = styled.textarea`
   min-height: 100px;
 `;
 
+const Select = styled.select`
+  ${formField}
+  height: 50px;
+  width: 100%;
+`;
+
 function encode(data) {
   return Object.keys(data)
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
@@ -72,45 +78,78 @@ class SimpleForm extends React.Component {
   render() {
     const { submitted } = this.state;
     return (
-      <form
-        name="contact"
-        method="post"
-        action="/success"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        onSubmit={this.handleSubmit}
-      >
-        <label htmlFor="bot-field" hidden>
-          Don’t fill this out: <input name="bot-field" onChange={this.handleChange} />
-        </label>
-        <label htmlFor="name">
-          Name
-          <Input
-            type="text"
-            name="name"
-            required
-            submitted={submitted}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor="email">
-          Email
-          <Input
-            type="email"
-            name="email"
-            required
-            submitted={submitted}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label htmlFor="message">
-          Message
-          <Textarea name="message" required submitted={submitted} onChange={this.handleChange} />
-        </label>
-        <ButtonContainer justify="flex-end">
-          <FilledButton type="submit">Send</FilledButton>
-        </ButtonContainer>
-      </form>
+      <StaticQuery
+        query={graphql`
+          query ServiceTitles {
+            allContentfulService {
+              edges {
+                node {
+                  title
+                }
+              }
+            }
+          }
+        `}
+        render={({ allContentfulService: { edges } }) => {
+          const services = edges.map(({ node }) => node.title);
+
+          return (
+            <form
+              name="contact"
+              method="post"
+              action="/success"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={this.handleSubmit}
+            >
+              <label htmlFor="bot-field" hidden>
+                Don’t fill this out: <input name="bot-field" onChange={this.handleChange} />
+              </label>
+              <label htmlFor="name">
+                Name
+                <Input
+                  type="text"
+                  name="name"
+                  required
+                  submitted={submitted}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label htmlFor="email">
+                Email
+                <Input
+                  type="email"
+                  name="email"
+                  required
+                  submitted={submitted}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label htmlFor="service">
+                Service
+                <Select name="sercice" required submitted={submitted} onChange={this.handleChange}>
+                  <option value="">Please select a service</option>
+                  {services.map((service) => (
+                    <option value={service}>{service}</option>
+                  ))}
+                </Select>
+              </label>
+              <label htmlFor="message">
+                Message
+                <Textarea
+                  name="message"
+                  required
+                  submitted={submitted}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <ButtonContainer justify="flex-end">
+                <FilledButton type="submit">Send</FilledButton>
+              </ButtonContainer>
+            </form>
+          );
+        }}
+      />
     );
   }
 }
