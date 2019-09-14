@@ -127,7 +127,7 @@ class SimpleForm extends React.Component {
               </label>
               <label htmlFor="service">
                 Service
-                <Select name="sercice" required submitted={submitted} onChange={this.handleChange}>
+                <Select name="service" required submitted={submitted} onChange={this.handleChange}>
                   <option value="">Please select a service</option>
                   {services.map((service) => (
                     <option value={service}>{service}</option>
