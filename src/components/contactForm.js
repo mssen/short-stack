@@ -8,7 +8,7 @@ import { th } from '../style/theme';
 import { FilledButton, ButtonContainer } from '../style/button';
 
 const formField = css`
-  border: 1px solid #7b8794;
+  border: 1px solid black;
   border-radius: ${th('borderRadius')}px;
   background: white;
   width: calc(100% - 1rem);
@@ -133,6 +133,15 @@ class SimpleForm extends React.Component {
                     <option value={service}>{service}</option>
                   ))}
                 </Select>
+              </label>
+              <label htmlFor="hearAbout">
+                How did you hear about me?
+                <Input
+                  type="text"
+                  name="hearAbout"
+                  submitted={submitted}
+                  onChange={this.handleChange}
+                />
               </label>
               <label htmlFor="message">
                 Message
