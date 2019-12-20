@@ -53,6 +53,7 @@ function encode(data) {
 }
 
 class SimpleForm extends React.Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = { submitted: false };
 
   onClick = () => this.setState({ submitted: true });

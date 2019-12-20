@@ -68,6 +68,7 @@ const RightArrow = styled.button`
 `;
 
 class Testimonials extends React.Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     // eslint-disable-next-line react/destructuring-assignment
     quotes: this.props.quotes,
