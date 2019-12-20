@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Lightbox from 'react-images';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 
 import Image from '../style/image';
 import useMedia from '../hooks/useMedia';
@@ -37,14 +37,10 @@ const Masonry = ({ thumbnails, lightboxPhotos }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
-  const gotoPrevLightboxImage = () => setCurrentImage(currentImage - 1);
-
-  const gotoNextLightboxImage = () => setCurrentImage(currentImage + 1);
-
   const openLightbox = (clickedImage, event) => {
     event.preventDefault();
-    setLightboxOpen(true);
     setCurrentImage(clickedImage);
+    setLightboxOpen(true);
   };
 
   const closeLightbox = () => setLightboxOpen(false);
@@ -55,35 +51,33 @@ const Masonry = ({ thumbnails, lightboxPhotos }) => {
     if (!columns[columnIndex]) {
       columns[columnIndex] = [];
     }
-    columns[columnIndex].push(thumbnail);
+    columns[columnIndex].push({ thumbnail, index });
   });
 
   return (
     <Container>
       <GalleryGrid>
-        {columns.map((column, index) => (
+        {columns.map((column, columnIndex) => (
           // eslint-disable-next-line react/no-array-index-key
-          <GridColumn key={index}>
-            {column.map((thumbnail) => (
+          <GridColumn key={columnIndex}>
+            {column.map(({ thumbnail, index: imageIndex }) => (
               <GridImage key={thumbnail.src}>
-                <a href={thumbnail.src} onClick={(event) => openLightbox(index, event)}>
+                <a href={thumbnail.src} onClick={(event) => openLightbox(imageIndex, event)}>
                   {/* eslint-disable-next-line react/no-array-index-key */}
-                  <Image key={index} fluid={thumbnail} />
+                  <Image key={imageIndex} fluid={thumbnail} />
                 </a>
               </GridImage>
             ))}
           </GridColumn>
         ))}
       </GalleryGrid>
-      <Lightbox
-        backdropClosesModal
-        images={lightboxPhotos}
-        currentImage={currentImage}
-        isOpen={lightboxOpen}
-        onClickPrev={gotoPrevLightboxImage}
-        onClickNext={gotoNextLightboxImage}
-        onClose={closeLightbox}
-      />
+      <ModalGateway>
+        {lightboxOpen && (
+          <Modal onClose={closeLightbox}>
+            <Carousel currentIndex={currentImage} views={lightboxPhotos} />
+          </Modal>
+        )}
+      </ModalGateway>
     </Container>
   );
 };
