@@ -50,6 +50,7 @@ const Container = styled.button`
 `;
 
 const NavIcon = ({ open, ...props }) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <Container open={open} {...props}>
     <div />
   </Container>

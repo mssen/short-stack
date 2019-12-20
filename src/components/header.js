@@ -115,7 +115,7 @@ body {
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  const toggleMenu = () => setOpen(!open);
+  const toggleMenu = () => setOpen((prevOpen) => !prevOpen);
 
   return (
     <header>
