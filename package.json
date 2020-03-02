@@ -27,7 +27,7 @@
     "react-pose": "^4.0.10",
     "styled-components": "^4.4.1",
     "styled-normalize": "^8.0.6",
-    "typeface-dancing-script": "0.0.72",
+    "typeface-dancing-script": "1.1.4",
     "typeface-lato": "0.0.75",
     "typeface-merriweather": "0.0.72"
   },
