@@ -14,7 +14,7 @@ const button = css`
 `;
 
 export const FilledButton = styled.button`
-${button}
+  ${button}
   background: ${th('main')};
   border: none;
   color: white;
