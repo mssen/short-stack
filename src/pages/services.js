@@ -9,21 +9,21 @@ import { th } from '../style/theme';
 import SmallerContainer from '../style/smallerContainer';
 
 const GridContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  column-gap: 2rem;
+  row-gap: 3rem;
+  margin-bottom: 3rem;
 `;
 
 const Card = styled.section`
   border-radius: 4px;
   background: white;
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
-  margin-bottom: 3rem;
 `;
 
 const GridCard = styled(Card)`
-  flex: 1 1 300px;
-  margin-left: 2rem;
+  grid-column: span ${(props) => props.span};
 `;
 
 const CardHeader = styled.header`
@@ -43,19 +43,6 @@ const CardHeader = styled.header`
 const GridCardBody = styled.article`
   padding: 2rem;
   padding-top: 0;
-`;
-
-const CardBody = styled.article`
-  padding: 2rem;
-
-  & > h4 {
-    margin-top: 3rem;
-    white-space: pre-wrap;
-  }
-
-  & > h4:first-child {
-    margin-top: 0;
-  }
 `;
 
 const PriceContainer = styled.p`
@@ -84,6 +71,7 @@ const Services = () => (
             edges {
               node {
                 order
+                span
                 title
                 price
                 priceSecondayText
@@ -101,17 +89,17 @@ const Services = () => (
         const sorted = edges
           .map(({ node }) => node)
           .sort((left, right) => left.order - right.order);
-        const last = sorted.slice(-1).pop();
-        const grid = sorted.slice(0, -1);
 
-        const gridList = grid.map((item) => (
-          <GridCard>
+        const gridList = sorted.map((item) => (
+          <GridCard key={item.title} span={item.span}>
             <CardHeader>
               <h3>{item.title}</h3>
             </CardHeader>
-            <PriceContainer>
-              <Price>${item.price}</Price> <Duration>/ {item.priceSecondayText}</Duration>
-            </PriceContainer>
+            {item.price && (
+              <PriceContainer>
+                <Price>${item.price}</Price> <Duration>/ {item.priceSecondayText}</Duration>
+              </PriceContainer>
+            )}
             <GridCardBody
               dangerouslySetInnerHTML={{
                 __html: item.description.childContentfulRichText.html,
@@ -123,16 +111,6 @@ const Services = () => (
         return (
           <SmallerContainer>
             <GridContainer>{gridList}</GridContainer>
-            <Card>
-              <CardHeader>
-                <h3>{last.title}</h3>
-              </CardHeader>
-              <CardBody
-                dangerouslySetInnerHTML={{
-                  __html: last.description.childContentfulRichText.html,
-                }}
-              />
-            </Card>
             <ButtonContainer>
               <Link to="/contact/">
                 <BigButton>Get in touch</BigButton>
