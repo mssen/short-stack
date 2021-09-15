@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import Testimonials from '../components/testimonials';
 import { BigButton, ButtonContainer } from '../style/button';
 import Image from '../style/image';
-import SmallerContainer from '../style/smallerConatiner';
+import SmallerContainer from '../style/smallerContainer';
 import ArrowIcon from '../images/arrow.svg';
 
 const GalleryButton = styled(ButtonContainer)`

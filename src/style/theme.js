@@ -20,7 +20,7 @@ export const theme = {
 
   desktop: 992,
   tablet: 768,
-  phone: 675,
+  phone: 705,
 };
 
 export const th = (property) => (props) => props.theme[property];

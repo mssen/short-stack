@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import ContactForm from '../components/contactForm';
 import SocialLinks from '../components/socialLinks';
 import PageHeader from '../style/pageHeader';
-import SmallerContainer from '../style/smallerConatiner';
+import SmallerContainer from '../style/smallerContainer';
 import { th } from '../style/theme';
 
 const ContactContainer = styled(SmallerContainer)`
