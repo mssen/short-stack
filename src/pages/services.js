@@ -10,7 +10,7 @@ import SmallerContainer from '../style/smallerContainer';
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 2rem;
   row-gap: 3rem;
   margin-bottom: 3rem;
@@ -23,7 +23,11 @@ const Card = styled.section`
 `;
 
 const GridCard = styled(Card)`
-  grid-column: span ${(props) => props.span};
+  grid-column: span 2;
+
+  @media (min-width: ${th('phone')}px) {
+    grid-column: span ${(props) => props.span};
+  }
 `;
 
 const CardHeader = styled.header`
