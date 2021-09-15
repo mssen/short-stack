@@ -148,7 +148,7 @@ const Header = () => {
           </NavItem>
           <NavItem>
             <NavLink to="/about/" activeClassName="active">
-              About
+              About Me
             </NavLink>
           </NavItem>
         </NavList>

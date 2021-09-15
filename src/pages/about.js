@@ -4,12 +4,6 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import PageHeader from '../style/pageHeader';
-import Image from '../style/image';
-
-const AboutImage = styled(Image)`
-  max-width: 750px;
-  margin: auto;
-`;
 
 const Article = styled.article`
   max-width: 35em;
@@ -18,19 +12,14 @@ const Article = styled.article`
 
 const About = () => (
   <Layout>
-    <PageHeader>About</PageHeader>
+    <PageHeader>About Me</PageHeader>
     <StaticQuery
       query={graphql`
         {
-          contentfulPage(pageTitle: { eq: "About" }) {
+          contentfulPage(pageTitle: { eq: "About Me" }) {
             text {
               childContentfulRichText {
                 html
-              }
-            }
-            picture {
-              fluid(maxWidth: 750) {
-                ...GatsbyContentfulFluid_withWebp_noBase64
               }
             }
           }
@@ -38,7 +27,6 @@ const About = () => (
       `}
       render={({ contentfulPage }) => (
         <section>
-          <AboutImage fluid={contentfulPage.picture.fluid} />
           <Article
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
