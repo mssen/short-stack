@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import PageHeader from '../style/pageHeader';
 import { BigButton, ButtonContainer } from '../style/button';
 import { th } from '../style/theme';
-import SmallerContainer from '../style/smallerConatiner';
+import SmallerContainer from '../style/smallerContainer';
 
 const GridContainer = styled.div`
   display: flex;
